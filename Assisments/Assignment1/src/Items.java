@@ -2,14 +2,13 @@ import java.util.Scanner;
 
 /*
  * Item Class represent the Detail of Items
- * itemName represent the name of item
- * price represent the price of item
- * 
- * getDetail methods takes input value for name and price
- * updatePrice change the price of the Item
  * 
  * */
 public class Items{
+	/* 
+	* itemName represent the name of item
+	 * price represent the price of item
+	 **/
 	String itemName;
 	double price;
 	
@@ -19,9 +18,9 @@ public class Items{
 	 * @param price represent price of the item
 	 * 
 	 * */
-	public Items(String name, double price)
+	public Items(String itemName, double price)
 	{
-		this.itemName=name;
+		this.itemName=itemName;
 		this.price=price;
 	}
 	

@@ -118,7 +118,7 @@ public class ShoppingCart {
 							break;
 				
 					case 6:
-							cartItem.printBill();
+							cartItem.calculateBill();
 							break;
 			
 					case 7:

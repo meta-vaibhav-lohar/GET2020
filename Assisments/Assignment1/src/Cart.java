@@ -3,29 +3,35 @@ import java.util.Set;
 
 /*
  *  This Class hold the data members and methods.
- *  cartItems is HashMap which stores the  object of Items class and the Quantity of Item
- *  bill is double type variable used to save the total bill
  *  
  * */
 public class Cart {
+		/*
+		 *  cartItems is HashMap which stores the  object of Items class and the Quantity of Item
+		 *  bill is double type variable used to save the total bill
+		 * */
 	
 		HashMap<Items, Integer> cartItems = new HashMap<Items, Integer>();
 		double bill;
+		
 		/*
 		 * Constructor to initialize the object
 		 * */
+		
 		public Cart() {
 			
 			bill=0.0;
 		}
+		
 		/*
 		 * Constructor to initialize the object 
 		 * @param item is Object of class items contain name and price of item
 		 * @param quantity represents the quantity of item taken
 		 * */
+		
 		public Cart(Items item, Integer quantity){
 			cartItems.put(item, quantity);
-			bill=0.0;
+			
 		}
 		
 		/*
@@ -35,10 +41,10 @@ public class Cart {
 		 * @result returns the Item object or null if Item not found
 		 * */
 		
-		public Items findItem(HashMap<Items, Integer> Items, String item){
+		public Items findItem(HashMap<Items, Integer> Items, String itemName){
 			Set<Items> keys = Items.keySet();
 			for(Items key: keys) {
-					if(key.itemName.equals(item)) {
+					if(key.itemName.equals(itemName)) {
 						return key;
 					}
 			}
@@ -52,16 +58,17 @@ public class Cart {
 		 * @param stockI represent the object of class Stock for getting the detail of the Item
 		 * 
 		 * */
-		public void addItem(String item, Integer quantity, Stock stockI) {
-			Items element = findItem(stockI.stockItems, item);
+		public void addItem(String itemName, Integer quantity, Stock stockI) {
+			Items element = findItem(stockI.stockItems, itemName);
+			
 			if(element != null) {
 						cartItems.put(element, quantity);
-						bill+=(element.price * quantity);
 						stockI.updateQuantity(element, quantity);
 			}
 			else {
 					System.out.println("Enter valid Item");
 			}
+			
 		}
 		
 		/*
@@ -70,17 +77,18 @@ public class Cart {
 		 * @param stockItem object used to update the quantity in stock 
 		 * 
 		 * */
-		public void deleteItem(String item, Stock stockItem) {
-			Items element = findItem(stockItem.stockItems, item);
+		
+		public void deleteItem(String itemName, Stock stockItem) {
+			Items element = findItem(stockItem.stockItems, itemName);
+			
 			if(element != null) {
-				bill-=(element.price * cartItems.get(element));
 				stockItem.stockItems.replace(element, stockItem.stockItems.get(element) + cartItems.get(element));
 				cartItems.remove(element);
 				System.out.println(element.itemName+" removed from cart");
 			}
 			else {
 				System.out.println("Enter valid Item");
-				}
+			}
 		}
 		
 		/*
@@ -90,10 +98,10 @@ public class Cart {
 		 * @param stockItem object used to update the quantity in stock 
 		 * 
 		 * */
-		public void reduceQuantity(String item, Integer quantity,Stock stockItem) {
-			Items element = findItem(cartItems, item);
+		public void reduceQuantity(String itemName, Integer quantity,Stock stockItem) {
+			Items element = findItem(cartItems, itemName);
+			
 			if( element != null) {
-				bill-=(element.price * quantity);
 				stockItem.stockItems.replace(element, stockItem.stockItems.get(element) + cartItems.get(element));
 				cartItems.replace(element, cartItems.get(element)-quantity);
 			}else {
@@ -105,6 +113,7 @@ public class Cart {
 		 * this method prints all the item in cart
 		 * 
 		 * */
+		
 		public void printItems(){
 			System.out.println("Items in Stock \n Items\t\t Price\t\t Quantity");
 			Set<Items> keys = cartItems.keySet();
@@ -116,7 +125,13 @@ public class Cart {
 		/*
 		 * this method print the total bill 
 		 * */
-		public void printBill(){
-			System.out.println("Total Amount :- "+ bill);
+		public void calculateBill(){
+			
+			bill=0.0;
+			Set<Items> keys = cartItems.keySet();
+			for(Items key: keys){
+				bill +=  key.price * cartItems.get(key));
+			}
+			System.out.println("Total Bill:- "+ bill);
 		}
 }

@@ -51,8 +51,8 @@ public class Stock{
 	 * @param item is name of item to be deleted
 	 * @param stockItem represent the object of class stock to access the list of item
 	 * */
-	public void deleteItem(String item, Stock stockItem){
-		Items element = findItem(stockItem.stockItems, item);
+	public void deleteItem(String itemName, Stock stockItem){
+		Items element = findItem(stockItem.stockItems, itemName);
 		if(element  != null) {
 			stockItems.remove(element);
 			System.out.println(element.itemName+" removed from cart");
