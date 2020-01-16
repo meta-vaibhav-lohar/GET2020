@@ -22,7 +22,7 @@ public class HexCalc {
 					String str =sc.nextLine();
 					return str.replaceAll("[^a-zA-Z0-9]", "");
 				}
-			catch (Exception ex) {
+			catch (Exception ex) {	
 					System.out.println("Enter string value only :");
 					sc.next();
 				}
@@ -57,48 +57,48 @@ public class HexCalc {
 	}
 	
 	/**
-	 * This method convert number of any base to decimal equivalent
+	 * This method convert number of any base to decimalimal equivalent
 	 *
 	 * @param number represent the number with any base
 	 * @param base represent the base of number
-	 * @return the decimal equivalent of number
+	 * @return the decimalimal equivalent of number
 	 */
-	public static Integer NBaseToDec(String number, Integer base) {
+	public static Integer NBaseTodecimal(String number, Integer base) {
 		int len = number.length();
 		int power = 1;
-		Integer dec = 0 ;
+		Integer decimal = 0 ;
 		
 		for(int iterator = len -1; iterator >= 0; iterator-- ) {
 			if( getChar(number.charAt(iterator)) >= base) {
 				return Integer.MIN_VALUE;
 			}
 			else{
-				dec += getChar(number.charAt(iterator)) * power;
+				decimal += getChar(number.charAt(iterator)) * power;
 				power = power * base;
 			}
 		}
-		return dec;
+		return decimal;
 	}
 	
 	/**
-	 * This method convert decimal number to respective base
+	 * This method convert decimalimal number to respective base
 	 *
-	 * @param dec represent the decimal number
+	 * @param decimal represent the decimalimal number
 	 * @param base represent the base to convert to
 	 * @return the converted number in respective base
 	 */
-	public static String decToBaseN( Integer dec, Integer base){
+	public static String decimalToBaseN( Integer decimal, Integer base){
 		String result ="";
-		while( dec > 0 ) {
-			result += revChar( dec % base );
-			dec /= base;
+		while( decimal > 0 ) {
+			result += revChar( decimal % base );
+			decimal /= base;
  		}
-		String decm = "";
+		String decimalm = "";
 		char ch[] = result.toCharArray();
 	    for(int iterator = ch.length - 1 ; iterator >= 0 ; iterator-- ) {  
-	        decm += ch[iterator];  
+	        decimalm += ch[iterator];  
 	    } 
-	    return decm;
+	    return decimalm;
 	    	
 	}
 	
@@ -130,25 +130,22 @@ public class HexCalc {
 	public static boolean compareEqual(String num1, String num2) {
 	
 		String bigNum = compareLength(num1, num2);
-		if( bigNum.equals(num1) )
+		if( bigNum.equals(num1) ||  bigNum.equals(num2) )
 			return false;
-		else if ( bigNum.equals(num2) )
-			return false;
-		else{
-			int len = num1.length();
-			int diff;
+	
+		int len = num1.length();
+		int diff;
 			
-			for(int iterator = 0 ; iterator < len ; iterator++ ){
-				diff = num1.charAt(iterator) - num2.charAt(iterator) ;
-				if( diff > 0 )
-					return false;
-				else if (diff < 0 )
-					return false;
-			}
-		return true;
+		for(int iterator = 0 ; iterator < len ; iterator++ ){
+			diff = num1.charAt(iterator) - num2.charAt(iterator) ;
+			if( diff != 0 )
+				return false;
+			
 		}
-		
+		return true;
 	}
+		
+	
 	
 	/**
 	 * this method compare the numbers for bigger number
@@ -283,11 +280,11 @@ public class HexCalc {
 			switch(choice){
 			
 				case 1:					
-						System.out.println("Sum = "+ decToBaseN( ( NBaseToDec(number1,base) + NBaseToDec(number2, base) ), base) );
+						System.out.println("Sum = "+ decimalToBaseN( ( NBaseTodecimal(number1,base) + NBaseTodecimal(number2, base) ), base) );
 						break;
 				case 2: 
-						num1 = NBaseToDec(number1, base);
-						num2 = NBaseToDec(number2, base);
+						num1 = NBaseTodecimal(number1, base);
+						num2 = NBaseTodecimal(number2, base);
 						Integer sub;
 						
 						if ( num1 < num2 ){
@@ -295,22 +292,22 @@ public class HexCalc {
 						}else{
 							sub = num1 - num2;
 						}
-						System.out.println("Sub = "+ decToBaseN(sub, base));
+						System.out.println("Sub = "+ decimalToBaseN(sub, base));
 						break;
 				case 3:
-						System.out.println("Multiply = "+ decToBaseN( (NBaseToDec(number1,base) * NBaseToDec(number2, base) ), base) );
+						System.out.println("Multiply = "+ decimalToBaseN( (NBaseTodecimal(number1,base) * NBaseTodecimal(number2, base) ), base) );
 						break;
 				case 4:
-						num1 = NBaseToDec(number1, base);
-						num2 = NBaseToDec(number2, base);
+						num1 = NBaseTodecimal(number1, base);
+						num2 = NBaseTodecimal(number2, base);
 						Integer mul;
 						
 						if ( num1 < num2 ){
-							mul = num2 / num1;
+								mul = num2 / num1;
 						}else{
 							mul = num1 / num2;
 						}
-						System.out.println("Divide = "+ decToBaseN( mul, base ) );
+						System.out.println("Divide = "+ decimalToBaseN( mul, base ) );
 						break;
 				case 5:
 						flag = false;
