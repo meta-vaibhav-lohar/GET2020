@@ -301,8 +301,12 @@ public class HexCalc {
 						num1 = NBaseTodecimal(number1, base);
 						num2 = NBaseTodecimal(number2, base);
 						Integer mul;
-						
-						if ( num1 < num2 ){
+						if(num1 ==0 && num2 == 0){
+							System.out.println("Both numbers can't be zero");
+							break;
+						}
+							
+						if ( num1 > num2  ){
 								mul = num2 / num1;
 						}else{
 							mul = num1 / num2;
