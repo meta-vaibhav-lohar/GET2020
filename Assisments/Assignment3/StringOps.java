@@ -4,7 +4,7 @@
 import java.util.Scanner;
 
 
-/**
+	/**
  * The Class StringOps.
  */
 public class StringOps {
@@ -67,10 +67,8 @@ public class StringOps {
 			int diff;
 			for(int i=0;i<len;i++){
 				diff=str1.charAt(i)-str2.charAt(i);
-				if(diff>0)
+				if(diff != 0)
 					return '0' ;
-				else if(diff <0)
-					return '0';
 			}
 		return '1';
 		}
@@ -115,17 +113,18 @@ public class StringOps {
 	/**
 	 * This method returns the longest word in string.
 	 *
-	 * @param string represent the string to be searched for longest word
+	 * @param inputString represent the string to be searched for longest word
 	 * @return the longest word
 	 */
-	public static String longestWordInString(String string){
-		System.out.println(string.length());
+	public static String longestWordInString(String inputString){
+		System.out.println(inputString.length());
+		String editedString = inputString + " ";
 		String word = "";
 		int iterator=0;
 		int startWord=0, endWord=0;
 		int count =0;
 		int maxLength=0;
-		for(char ch: string.toCharArray() ){
+		for(char ch: editedString.toCharArray() ){
 			iterator++;
 			if((ch >= 'a' && ch <= 'z') ||  ( ch >= 'A' && ch <= 'Z' ) ){
 				count++;
@@ -140,15 +139,9 @@ public class StringOps {
 				}
 			}
 		}
-		if( maxLength <= count){
-			
-			maxLength = count;
-			startWord = iterator - count;
-			endWord = iterator;
-			count=0;
-		}
+
 		for( iterator=startWord; iterator < endWord; iterator++){
-			word += string.charAt(iterator);
+			word += editedString.charAt(iterator);
 		}
 		return word;
 	}
