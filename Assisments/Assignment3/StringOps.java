@@ -58,19 +58,19 @@ public class StringOps {
 	 * @param str2 represents string 1 for comparing
 	 * @return 0 if not equal, else 1 if equal
 	 */
-	public static char compareEqual(String str1, String str2) {
+	public static boolean compareEqual(String str1, String str2) {
 
 		if(str1.length() != str2.length())
-			return '0' ;
+			return false ;
 		else{
 			int len = str1.length();
 			int diff;
-			for(int i=0;i<len;i++){
-				diff=str1.charAt(i)-str2.charAt(i);
+			for(int iterator =0; iterator < len; iterator++){
+				diff=str1.charAt(iterator)-str2.charAt(iterator);
 				if(diff != 0)
-					return '0' ;
+					return false ;
 			}
-		return '1';
+		return true;
 		}
 		
 	}
@@ -174,11 +174,11 @@ public class StringOps {
 						
 						System.out.println("Enter the String 2");
 						String str2 = getString();
-						char res = compareEqual(str1, str2);
-						if( res == '0')
-							System.out.println("Not Equal");
-						else
+						boolean res = compareEqual(str1, str2);
+						if( res)
 							System.out.println("Equal");
+						else
+							System.out.println(" Not Equal");
 						break;
 						
 				case 2: 
@@ -210,4 +210,4 @@ public class StringOps {
 			}
 		}
 	}
-}
+}	
