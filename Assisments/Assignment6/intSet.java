@@ -22,9 +22,7 @@ public final class intSet {
 			throw new AssertionError("elements are not in range");
 		}
 		boolean[] markEnteredValues = new boolean[1001];
-		for (int iterator = 1; iterator <= 1000; iterator++) {
-			markEnteredValues[iterator] = false;
-		}
+
 		// checks repeated elements exist or not
 		for (int iterator = 0; iterator < setArray.length; iterator++) {
 			if (markEnteredValues[setArray[iterator]]) {
@@ -44,7 +42,8 @@ public final class intSet {
 	 * @return true if element is present in set otherwise false
 	 */
 	public boolean isMember(int element) {
-		for (int iterator = 0; iterator < size(); iterator++) {
+		int len = size();
+		for (int iterator = 0; iterator < len; iterator++) {
 			if (setArray[iterator] == element) {
 				return true;
 			}
@@ -70,19 +69,16 @@ public final class intSet {
 	 */
 	public boolean isSubSet(intSet s) {
 		int setArrayMarker = 0;
-		for (int iterator1 = 0; iterator1< s.size(); iterator1++) {
-			for (int iterator2 = setArrayMarker; iterator2 < size()	&& s.setArray[iterator1] < setArray[iterator2]; iterator2++) {
-				if (s.setArray[iterator1] == setArray[iterator2]) {
-					setArrayMarker = iterator2;
-					break;
-				}
-				if (iterator2 == size() - 1) {
-					System.out.println(iterator2);
-					return false;
-				}
-			}
-		}
-		return true;
+		int len = s.size();
+		boolean flag = false;
+		for( int iterator = 0;iterator < len; iterator++)
+			if(isMember(s.setArray[iterator]))
+				flag=true;
+			else
+				return false;
+			
+		
+		return flag;
 	}
 
 	/**
@@ -91,7 +87,8 @@ public final class intSet {
 	 * @return true if all elements are in specified range otherwise false
 	 */
 	private boolean checkRangeOfSetArray() {
-		for (int iterator = 0; iterator < size(); iterator++) {
+		int len = size();
+		for (int iterator = 0; iterator < len; iterator++) {
 			if (setArray[iterator] < 1 || setArray[iterator] > 1000) {
 				return false;
 			}
@@ -143,7 +140,8 @@ public final class intSet {
 	 */
 	public intSet union(intSet set) {
 		int setLength = 0;
-		int[] temporaryArray = new int[size() + set.size()];
+		int len = size();
+		int[] temporaryArray = new int[len + set.size()];
 		for (int iterator = 0; iterator < size(); iterator++) {
 			temporaryArray[setLength] = setArray[iterator];
 			setLength++;
@@ -172,5 +170,6 @@ public final class intSet {
 		}
 		return setArray;
 	}
+	
 
 }
