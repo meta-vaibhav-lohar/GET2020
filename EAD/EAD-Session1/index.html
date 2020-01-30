@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Metacube Parking System</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="index.js"></script>
+</head>
+
+<body>
+
+    <div id="heading">
+        <h1>Metacube Parking System</h1>
+    </div>
+    <!-- 
+    <div class="register" id="empForm">
+        <form>
+            <div class="form-items">
+                <label for="empName">
+                <input id="empName" required class="input" type="text" name="empName" placeholder="Name (Only Alphabets)" minlength="2" />
+              
+            </label>
+            </div>
+            <br/>
+
+            <div class="form-items">
+                <label class="label">
+            <input id="empGen" type="radio" name="Gender" />
+             Male
+                <span class="checkmark"></span>
+            </label>
+                <label class="label">
+            <input id="empGen" type="radio" name="Gender" />
+             Female
+                <span class="checkmark"></span>
+            </label>
+            </div>
+            <br/>
+
+            <div class="form-items">
+                <label for="email">
+                <input required type="email" name="email" class="input" placeholder="Email Address" ] />
+            </label >
+            </div>
+            <br/>
+
+            <div class="form-items">
+                <label for="password">
+                    <input required id="empPass" type="password" name="password" class="input" placeholder="Password" />
+                </label >
+            </div>
+            <br/>
+
+            <div class="form-items">
+                    <label for="cpassword">
+                        <input required type="password" id="confirmPass" class="input" name="cpassword" placeholder="Confirm Password" required />
+                    </label >
+            </div>
+            <br/>
+
+            <div class="form-items">
+                    <label for="tel">
+                        <input required type="tel" class="input" name="tel"
+                        minlength="8" pattern="/\d/g" placeholder="Phone number" />
+                    </label >
+            </div>
+            <br/>
+
+           <input required type="button" value="Submit" class="btn" onclick="validate()"/>
+            <br/>
+    
+        </form>
+    </div>
+    <br/> -->
+
+    <div class="register" id="vehForm">
+        <form>
+            <div class="form-items">
+                <input class="input" id="vehName" type="text" placeholder="Vehicle Name" required/>
+            </div>
+            <br/>
+
+            <div class="form-items">
+                <select class="input" id="vehType" title="Chose Vehicle Type">
+                    <option selected hidden>-- Choose Vehicle Type --</option>
+                    <option value="cycle">Cycle</option>
+                    <option value="bike">Bike</option>
+                    <option value="car">Four Wheeler</option>
+                </select>
+            </div>
+            <br/>
+
+            <div class="form-items">
+                <input class="input" type="text" placeholder="Employee Id" required />
+            </div>
+            <br/>
+
+            <div class="form-items">
+                <textarea class="input" placeholder="Identification" rows="5"></textarea>
+            </div>
+            <br/>
+
+            <div class="form-items">
+                <input class="btn" type="button" value="Submit" onclick="price()" />
+            </div>
+        </form>
+    </div>
+    <br/>
+
+
+    <div id="rateCard" class="register" style="display: none;">
+        <form>
+            <div class="form-items">
+                <label class="label">
+                    <input type='radio' name='plan' value ='daily'/>Daily :  <span class="checkmark" id="dailyRate"></span><span id="dailyRate1"></span>
+                </label>
+                <br/>
+                <label class="label">
+                    <input type='radio' name='plan' value='monthly'/>Monthly : <span class="checkmark" id="monthlyRate"></span><span id="monthlyRate1"></span>
+                </label>
+                <br/>
+                <label class="label">
+                    <input type='radio' name='plan' value ='yearly'/>Yearly : <span class="checkmark" id="yearlyRate"></span><span id="yearlyRate1"></span>
+                </label >
+            </div>
+            <br/>
+            <div class="form-items">
+                <input type='button' class="btn"value='Submit' onclick='bill()' />
+            </div>
+        </form>
+    </div>
+
+                <div class="register" id="bill"></div>
+    </div>
+</body>
+
+</html>
