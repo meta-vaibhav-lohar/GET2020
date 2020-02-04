@@ -24,7 +24,7 @@ public final class Matrix {
 		int[][] MatrixArray=new int[MAX_ELEMENT][ARRAY_COLUMNS];
 		int iterator1=0,iterator2=0,iterator3=0;
 		if(Matrix.row==row && Matrix.column==column) {
-			while(iterator1<this.MatrixArray.length 
+			while( iterator1<this.MatrixArray.length  
 					&& iterator2<Matrix.MatrixArray.length) {
 				//matrice1.row<matrice2.row or matrice1.column<matrice2.column
 				if((this.MatrixArray[iterator1][0]<Matrix.MatrixArray[iterator2][0])

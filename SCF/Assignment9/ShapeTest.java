@@ -41,7 +41,7 @@ public class ShapeTest {
         assertEquals(16, area, 0);
     }
     
-
+    
     //create shape with invalid parameters as the go beyond screen
     @Test(expected = AssertionError.class)
     public void testCreateShapeSquareInvalidCoordinates(){
