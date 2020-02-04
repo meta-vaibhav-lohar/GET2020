@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Students</title>
+    <script type="text/javascript" src="index.js"></script>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <h3 id="heading"> Student Details</h3>
+    <div class="register">
+        <div class="form-items">
+            <button class="btn" type="button" id="create" style="width: min-content;" onclick="fetchStudent()">Show</button>
+        </div>
+        <div class="form-items" id="myform">
+            <table>
+
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+            </table>
+        </div>
+        <div class="form-items" id="mydata">
+            <table id="myTableData" border="1" cellpadding="2">
+                <tr>
+                    <td>&nbsp;</td>
+                    <td><b>First Name</b></td>
+                    <td><b>Last Name</b></td>
+                    <td><b>Father Name </b></td>
+                    <td><b>Email</b></td>
+                    <td><b>Class</b></td>
+                    <td><b>Age</b></td>
+                </tr>
+            </table>
+            &nbsp;
+
+        </div>
+        <div class="register" id="update" style="display: none;">
+            <h3 id="heading">Enter the modified values</h3>
+            <div class="form-items">
+                <input class="input" type="text" name="firstName" placeholder="First Name" id="firstNameId" />
+            </div>
+            <div class="form-items">
+                <input class="input" type="text" name="lastName" placeholder="Last Name" id="lastNameId" />
+            </div>
+            <div class="form-items">
+                <input class="input" type="text" name="fatherName" placeholder="Father Name" id="fatherNameId" />
+            </div>
+            <div class="form-items">
+                <input class="input" type="text" name="email" placeholder="Email Address" id="emailId" />
+            </div>
+            <div class="form-items">
+                <input class="input" type="text" name="class" placeholder="Class" id="classId" />
+            </div>
+            <div class="form-items">
+                <input class="input" type="text" name="age" placeholder="Age" id="ageId" />
+            </div>
+            <div class="form-items">
+                <input class="btn" type="button" id="btn" value="Add Details" onclick="sendUpdates()" />
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>Student</display-name>
+	<servlet>
+	<servlet-name>addStudent</servlet-name>
+	<servlet-class>AddDetailsServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	<servlet-name>addStudent</servlet-name>
+	<url-pattern>/add</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+	<servlet-name>searchStudent</servlet-name>
+	<servlet-class>SearchStudent</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	<servlet-name>searchStudent</servlet-name>
+	<url-pattern>/search</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	<servlet-name>update</servlet-name>
+	<servlet-class>showAllAndUpdate</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	<servlet-name>update</servlet-name>
+	<url-pattern>/show</url-pattern>
+	</servlet-mapping>
+	
+</web-app>

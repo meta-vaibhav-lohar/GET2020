@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Students</title>
+    <script src="index.js"></script>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+
+    <h2 id="heading">Search Student Details</h2>
+    <div class="register" id="det1">
+        <div class="form-items">
+            <input class="input" type="text" name="firstName" placeholder="First Name" id="firstNameId" />
+        </div>
+        <div class="form-items">
+            <input class="input" type="text" name="lastName" placeholder="Last Name" id="lastNameId" />
+        </div>
+        <div class="form-items">
+            <input class="btn" type="button" id="btn" value="Add Details" onclick="search()" />
+        </div>
+
+
+    </div>
+    <div class="register" id="det2" style="display: none;">
+        <div class="form-items" id="myform">
+            <table>
+
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+            </table>
+        </div>
+        <div class="form-items" id="mydata">
+            <table id="myTableData" border="1" cellpadding="2">
+                <tr>
+
+                    <td><b>First Name</b></td>
+                    <td><b>Last Name</b></td>
+                    <td><b>Father Name </b></td>
+                    <td><b>Email</b></td>
+                    <td><b>Class</b></td>
+                    <td><b>Age</b></td>
+                </tr>
+            </table>
+            &nbsp;
+
+        </div>
+    </div>
+</body>
+
+</html>
