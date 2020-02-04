@@ -54,7 +54,7 @@ public class Screen {
         } 
         else 
             throw InvalidId;
-        
+
         switch (type) {
         case CIRCLE:
             // Check the validation of the input parameters
