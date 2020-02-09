@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <title>Sign Up</title>
+</head>
+
+<body>
+    <nav>
+        <h1>
+            Meta-Parking
+        </h1>
+        <form action='./login.html'>
+            <button>
+                Log In to Existing Account
+            </button>
+        </form>
+    </nav>
+    <h1 class="central-heading">Register Here</h1>
+    <div class="form-container">
+        <form method="post" onsubmit="return validateRegisterForm()" id="registration-form" action="signup">
+            <div id="customer-register-form">
+                <div class="float-container">
+                    <label for="first-name">First Name</label>
+                    <input type="text" id="first-name" name="first-name" onkeyup="onFieldChange('first-name', /^[A-Za-z]+$/)" data-placeholder="Enter First Name" required/>
+                </div>
+
+                <div class="float-container">
+                    <label for="last-name">Last Name</label>
+                    <input type="text" name="last-name" id="last-name" onkeyup="onFieldChange('last-name', /^[A-Za-z]+$/)" data-placeholder="Enter Last Name" required/>
+                </div>
+
+                <div class="container">
+                    <span>Gender </span>
+                    <label class="radio-container" style="margin-top: 10px;">
+                        <input type="radio" name="gender" onclick="validateRadioInputs(['male','female'])" id="male" value="male" required/>Male
+                        <span class="checkmark"></span>
+                    </label>
+
+                    <label class="radio-container">
+                        <input type="radio" name="gender" id="female" onclick="validateRadioInputs(['male','female'])" value="female" required/>Female
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+
+                <div class="float-container">
+                    <label for="email">Email ID</label>
+                    <input type="email" name="email" id="email" onkeyup="onFieldChange('email', /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)" data-placeholder="Enter Email ID" required/>
+                </div>
+
+                <div class="float-container">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" onkeyup="onFieldChange('password', /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/)" data-placeholder="Enter Password" required/>
+                </div>
+
+                <div class="float-container">
+                    <label for="confirm-password">Confirm Password</label>
+                    <input type="password" name="confirm-password" id="confirm-password" onkeyup="confirmPassword()" data-placeholder="Confirm Password" required/>
+                </div>
+
+                <div class="float-container">
+                    <label for="contact">Contact Number</label>
+                    <input type="tel" name="contact" id="contact" maxlength="10" onkeyup="onFieldChange('contact',/^[0-9]{10}/)" data-placeholder="Enter Contact No." required/>
+                </div>
+
+                <div class="container">
+                    <label for="organisation">Organisation</label><br />
+                    <select name="organisation" onchange="validateSelectInput('organisation')" id="organisation">
+                        <option value="" selected="selected" disabled="disabled">Select Option</option>
+                        <option value="M1">M1</option>
+                        <option value="M2">M2</option>
+                        <option value="M3">M3</option>
+                        <option value="M4">M4</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="next-button">Next >></button>
+            </div>
+        </form>
+
+        <form method="post" id="registration-form-2" action="vehicleRegister">
+
+            <div id="vehicle-register-form">
+                <div class="container">
+                    <span>Registration Id is <span id="registrationId" style="font-weight: bold;"></span></span>
+                </div>
+
+                <input type="hidden" name="registerId" id="registerId" />
+                <div class="float-container">
+                    <label for="car-name">Car Name</label>
+                    <input type="text" id="car-name" name="car-name" onkeyup="onFieldChange('car-name', /^[A-Z a-z]+$/)" data-placeholder="Enter Car Name" required/>
+                </div>
+
+                <div class="container">
+                    <label for="vehicle-type">Vehicle Type</label><br />
+                    <select name="vehicle-type" onchange="validateSelectInput('vehicle-type')" id="vehicle-type">
+                        <option value="" selected="selected" disabled="disabled">Select Option</option>
+                        <option value="cycle">Cycle</option>
+                        <option value="two-wheeler">Two Wheeler</option>
+                        <option value="four-wheeler">Four Wheeler</option>
+                    </select>
+                </div>
+
+                <div class="float-container">
+                    <label for="vehicle-number">Vehicle Number</label>
+                    <input type="text" id="vehicle-number" name="vehicle-number" onkeyup="onFieldChange('vehicle-number', /^(?=.*\d)(?=.*[A-Z]).{9,10}/)" data-placeholder="Ex: RJ17CAXXXX" required/>
+                </div>
+
+                <div class="float-container">
+                    <label for="employee-id">Employee ID</label>
+                    <input type="text" id="employee-id" name="employee-id" onkeyup="onFieldChange('employee-id', /^[A-Z]*[a-z]*[0-9]{1,}/)" data-placeholder="Your Employee ID" required/>
+                </div>
+
+                <div class="container">
+                    <label for="identification">Description</label><br />
+                    <textarea id="identification" rows="4" name="identification" placeholder="Identification of your vehicle"></textarea>
+                </div>
+
+                <button type="button" class="next-button" onclick="validateVehicleForm()">Next >></button>
+            </div>
+
+            <div id="pass-type-form">
+                <div class="container">
+                    <label for="pass-type">Pass Type</label><br />
+                    <select name="pass-type" id="pass-type" onchange="validateSelectInput('pass-type'); calculate();">
+                        <option value="" selected="selected" disabled="disabled">Select Option</option>
+                        <option value="daily">Daily</option>
+                        <option value="monthly">Monthly</option>
+                        <option value="yearly">Yearly</option>
+                    </select>
+                </div>
+
+                <div class="container">
+                    <span>Currency </span>
+                    <label class="radio-container" style="margin-top: 10px;">
+                        <input type="radio" name="currency" id="inr" value="INR" onclick="changeCurrency('INR'); calculate();" checked="checked" required/>INR
+                        <span class="checkmark"></span>
+                    </label>
+
+                    <label class="radio-container">
+                        <input type="radio" name="currency" id="usd" value="USD" onclick="changeCurrency('USD'); calculate();" required/>USD
+                        <span class="checkmark"></span>
+                    </label>
+
+                    <label class="radio-container">
+                        <input type="radio" name="currency" id="yen" value="YEN" onclick="changeCurrency('YEN'); calculate();" required/>YEN
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+
+                <div class="container">
+                    <span>Total Amount(<span id="current-currency">INR</span>): <span style="font-weight: bold;" id="amount"></span></span>
+                </div>
+
+                <input type="hidden" name="price" id="price" />
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+    <script src="scripts.js"></script>
+    <script src="signup.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,235 @@
+* {
+    font-family: arial;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
+nav {
+    background-color: blue;
+    color: white;
+    transform: translateY(-20px);
+}
+
+nav h1 {
+    padding-top: 30px;
+    padding-left: 80px;
+    padding-bottom: 30px;
+}
+
+nav button {
+    position: absolute;
+    right: 100px;
+    top: 30px;
+    background-color: orange;
+    color: white;
+    border: none;
+    padding: 7px;
+}
+
+nav button:hover {
+    transform: scale(1.06);
+}
+
+nav button:active {
+    transform: scale(1);
+    background-color: red;
+}
+
+.central-heading {
+    text-align: center;
+}
+
+.form-container {
+    border: double 7px grey;
+    padding: 50px;
+    margin: 0 auto;
+    width: 300px;
+    align-self: center;
+    /* box-sizing: border-box; */
+}
+
+.float-container {
+    border-bottom: solid 1px #ccc;
+    box-sizing: border-box;
+    margin-bottom: 8px;
+    padding: 0 8px;
+    position: relative;
+    width: 300px;
+    /** active label */
+}
+
+.container {
+    margin-bottom: 8px;
+    margin-top: 24px;
+    padding: 0 8px;
+    position: relative;
+    width: 300px;
+}
+
+.container textarea {
+    width: 100%;
+    font-size: 16px;
+    resize: none;
+    margin-top: 10px;
+}
+
+.container select {
+    font-size: 20px;
+    margin-top: 10px;
+    width: 80%;
+}
+
+.float-container input {
+    border: none;
+    font-size: 16px;
+    outline: 0;
+    padding: 16px 0 10px;
+    width: 100%;
+}
+
+.float-container label {
+    font-size: 16px;
+    position: absolute;
+    -webkit-transform-origin: top left;
+    transform-origin: top left;
+    -webkit-transform: translate(0, 16px) scale(1);
+    transform: translate(0, 16px) scale(1);
+    -webkit-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
+
+.float-container.active label {
+    -webkit-transform: translate(0, 4px) scale(0.75);
+    transform: translate(0, 4px) scale(0.75);
+}
+
+.radio-container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 18px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.radio-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #eee;
+    border-radius: 50%;
+}
+
+.radio-container:hover input~.checkmark {
+    background-color: #ccc;
+}
+
+.radio-container input:checked~.checkmark {
+    background-color: #2196F3;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.radio-container input:checked~.checkmark:after {
+    display: block;
+}
+
+.radio-container .checkmark:after {
+    top: 6px;
+    left: 6px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+}
+
+button[type="submit"],
+.next-button {
+    margin-top: 16px;
+    background-color: green;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover,
+.next-button:hover {
+    transform: scale(1.04);
+}
+
+.next-button {
+    border-radius: 32px;
+    background-color: blue !important;
+}
+
+button[type="submit"]:active,
+.next-button:active {
+    transform: scale(1);
+}
+
+#vehicle-register-form,
+#pass-type-form {
+    display: none;
+}
+
+th {
+    text-align: left;
+}
+
+th,
+td {
+    padding: 5px;
+}
+
+th {
+    font-size: 18px;
+}
+
+td input[type="text"],
+td input[type="tel"],
+td input[type="email"],
+td select,
+td textarea {
+    padding: 5px;
+    font-size: 18px;
+    width: 100%;
+}
+
+td textarea {
+    resize: none;
+}
+
+table,
+.central {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 100px;
+}
+
+table li {
+    font-size: 20px;
+}

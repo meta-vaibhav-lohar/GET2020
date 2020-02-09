@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <title>Log In</title>
+</head>
+
+<body>
+    <nav>
+        <h1>
+            Meta-Parking
+        </h1>
+        <form action='./signup.html'>
+            <button>
+                New User, Register here
+            </button>
+        </form>
+    </nav>
+    <h1 class="central-heading">Login Here</h1>
+    <div class="form-container">
+        <form method="post" id="login-form" action="login" onsubmit="return validateLoginForm()">
+
+            <div class="float-container">
+                <label for="email">Email ID</label>
+                <input type="email" name="email" id="email" onkeyup="onFieldChange('email', /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)" data-placeholder="Enter Email ID" required />
+            </div>
+
+            <div class="float-container">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" onkeyup="onFieldChange('password', /.*/)" data-placeholder="Enter Password" required />
+            </div>
+
+            <button type="submit">Login</button>
+        </form>
+    </div>
+    <script src="scripts.js"></script>
+</body>
+
+</html>
