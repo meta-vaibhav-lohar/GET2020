@@ -6,6 +6,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.ResultSet;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,7 +22,7 @@ public class ProcessUpdateVehicle extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	// JDBC driver name and database URL
     private static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";  
-    private static final String DB_URL="jdbc:mysql://localhost/META_PARKING";
+    private static final String DB_URL="jdbc:mysql://localhost:3306/parking";
 
     //  Database credentials
     private static final String USER = "root";
@@ -79,10 +80,10 @@ public class ProcessUpdateVehicle extends HttpServlet {
                 if(rs == 1) {
                 	
                 	out.println("<script>swal('Update Successful', 'Your vehicle has been successfully updated', 'success')");
-    				out.println(".then(() => { window.location = '/EAD-2/home'; })</script>");
+    				out.println(".then(() => { window.location = '/Parking/home'; })</script>");
     			} else {
     				out.println("<script>swal('Update Unsuccessful', 'Something went wrong!', 'error')");
-    				out.println(".then(() => { window.location = '/EAD-2/home'; })</script>");
+    				out.println(".then(() => { window.location = '/Parking/home'; })</script>");
     			}
             	
             	out.println("</body></html>");

@@ -22,7 +22,7 @@ public class ProcessUpdateUser extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	// JDBC driver name and database URL
     private static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";  
-    private static final String DB_URL="jdbc:mysql://localhost/META_PARKING";
+    private static final String DB_URL="jdbc:mysql://localhost:3306/parking";
 
     //  Database credentials
     private static final String USER = "root";
@@ -77,10 +77,10 @@ public class ProcessUpdateUser extends HttpServlet {
 				session.setAttribute("user", email);
             	
             	out.println("<script>swal('Update Successful', 'Your profile has been successfully updated', 'success')");
-				out.println(".then(() => { window.location = '/EAD-2/home'; })</script>");
+				out.println(".then(() => { window.location = '/Parking/home'; })</script>");
 			} else {
 				out.println("<script>swal('Update Unsuccessful', 'Something went wrong!', 'error')");
-				out.println(".then(() => { window.location = '/EAD-2/home'; })</script>");
+				out.println(".then(() => { window.location = '/Parking/home'; })</script>");
 			}
         	
         	out.println("</body></html>");

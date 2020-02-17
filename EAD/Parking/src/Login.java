@@ -15,7 +15,7 @@ public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	// JDBC driver name and database URL
     private static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";  
-    private static final String DB_URL="jdbc:mysql://localhost/META_PARKING";
+    private static final String DB_URL="jdbc:mysql://localhost:3306/parking";
 
     //  Database credentials
     private static final String USER = "root";
@@ -41,7 +41,7 @@ public class Login extends HttpServlet {
             // Execute SQL query
             Statement stmt = conn.createStatement();
             String sql;
-            sql = "SELECT first_name, email FROM Users WHERE email=\""+email+"\"";
+            sql = "SELECT first_name, email FROM Users WHERE email=\""+email.toLowerCase()+"\"";
             ResultSet rs = stmt.executeQuery(sql);
             
             out.println("<html><body>");
@@ -57,15 +57,15 @@ public class Login extends HttpServlet {
 					
 					out.println("<script>swal('Login Successful', 'Welcome back "
 							+ name + "', 'success')");
-					out.println(".then(() => { window.location = '/EAD-2/home'; })</script>");
+					out.println(".then(() => { window.location = '/Parking/home'; })</script>");
 				} else {
 					out.println("<script>swal('Login Unsuccessful', 'Check your password', 'error')");
-					out.println(".then(() => { window.location = '/EAD-2/login.html'; })</script>");
+					out.println(".then(() => { window.location = '/Parking/login.html'; })</script>");
 				}
 			} else {
 				out.println("<script>swal('Login Unsuccessful', 'User " + email
 						+ " not found!', 'error')");
-				out.println(".then(() => { window.location = '/EAD-2/login.html'; })</script>");
+				out.println(".then(() => { window.location = '/Parking/login.html'; })</script>");
 			}
             
         	

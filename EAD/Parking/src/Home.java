@@ -19,7 +19,7 @@ public class Home extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	// JDBC driver name and database URL
     private static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";  
-    private static final String DB_URL="jdbc:mysql://localhost/META_PARKING";
+    private static final String DB_URL="jdbc:mysql://localhost:3306/parking";
 
     //  Database credentials
     private static final String USER = "root";
@@ -51,11 +51,12 @@ public class Home extends HttpServlet {
         	// Open a connection
             Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
             String email = session.getAttribute("user").toString();
+            System.out.println(email);
             
             // Execute SQL query
             Statement stmt = conn.createStatement();
             String sql;
-            sql = "SELECT * FROM Users WHERE email=\""+email+"\"";
+            sql = "SELECT id,first_name,last_name,gender,email,password,contact,vehicleId,gender,organisation FROM Users WHERE email=\""+email+"\"";
             ResultSet rs = stmt.executeQuery(sql);
             
             String doc = "<!DOCTYPE html><html lang=\"en\"><head> <link rel=\"stylesheet\" type=\"text/css\" href=\"styles.css\"/> <title>Home</title></head><body> <nav> <h1> Meta-Parking </h1> <form action='logout' method='get'> <button> Logout </button> </form> </nav> <h1 class=\"central-heading\">Your Information <a href='./updateUser'>Edit >></a></h1> <table> <tr> <th>Registration Id: </th> <td>";

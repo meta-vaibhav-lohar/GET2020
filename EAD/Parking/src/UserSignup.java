@@ -17,7 +17,7 @@ public class UserSignup extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	// JDBC driver name and database URL
     private static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";  
-    private static final String DB_URL="jdbc:mysql://localhost/META_PARKING";
+    private static final String DB_URL="jdbc:mysql://localhost:3306/parking";
 
     //  Database credentials
     private static final String USER = "root";
@@ -56,7 +56,7 @@ public class UserSignup extends HttpServlet {
             // Execute SQL query
             Statement stmt = conn.createStatement();
             
-            String validationSql = "SELECT * FROM USERS WHERE EMAIL='"+email+"'";
+            String validationSql = "SELECT id,first_name,last_name,gender,email,password,contact,vehicleId,gender,organisation	  FROM USERS WHERE EMAIL='"+email.toLowerCase()+"'";
             ResultSet check = stmt.executeQuery(validationSql);
             
             out.println("<html><body>");
@@ -66,7 +66,7 @@ public class UserSignup extends HttpServlet {
             if(!check.next()){
             
 	            String sql = "INSERT INTO Users (first_name,last_name,gender,email,password,contact,organisation) ";
-	            sql += "VALUES ('"+first_name+"','"+last_name+"','"+gender+"','"+email+"','"+password+"','"+contact+"','"+organisation+"')";
+	            sql += "VALUES ('"+first_name+"','"+last_name+"','"+gender+"','"+email.toLowerCase()+"','"+password+"','"+contact+"','"+organisation+"')";
 	            int rs = stmt.executeUpdate(sql);
 
 	            if(rs == 1) {
@@ -79,14 +79,14 @@ public class UserSignup extends HttpServlet {
 	            	
 	            	int id = idResult.getInt("id");
 	            	out.println("<script>swal('Registration Successful', 'Your registration ID is "+id+"', 'success')");
-					out.println(".then(() => { window.location = '/EAD-2/signup.html?registrationId="+id+"'; })</script>");
+					out.println(".then(() => { window.location = '/Parking/signup.html?registrationId="+id+"'; })</script>");
 				} else {
 					out.println("<script>swal('Registration Unsuccessful', 'Something went wrong!', 'error')");
-					out.println(".then(() => { window.location = '/EAD-2/signup.html'; })</script>");
+					out.println(".then(() => { window.location = '/Parking/signup.html'; })</script>");
 				}
             } else {
             	out.println("<script>swal('Registration Unsuccessful', '"+email+" is already registred. Try with another email or swith to login page.', 'error')");
-				out.println(".then(() => { window.location = '/EAD-2/signup.html'; })</script>");
+				out.println(".then(() => { window.location = '/Parking/signup.html'; })</script>");
             }
         	
         	out.println("</body></html>");

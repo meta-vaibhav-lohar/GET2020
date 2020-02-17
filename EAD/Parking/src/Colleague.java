@@ -22,7 +22,7 @@ public class Colleague extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	// JDBC driver name and database URL
     private static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";  
-    private static final String DB_URL="jdbc:mysql://localhost/META_PARKING";
+    private static final String DB_URL="jdbc:mysql://localhost:3306/studentdetails";
 
     //  Database credentials
     private static final String USER = "root";
@@ -58,7 +58,7 @@ public class Colleague extends HttpServlet {
             // Execute SQL query
             Statement stmt = conn.createStatement();
             String sql;
-            sql = "SELECT * FROM Users WHERE email=\""+email+"\"";
+            sql = "SELECT id,first_name,last_name,gender,email,password,contact,vehicleId,gender,organisation FROM Users WHERE email=\""+email+"\"";
             ResultSet rs = stmt.executeQuery(sql);
             
             String doc = "<!DOCTYPE html><html lang=\"en\"><head> <link rel=\"stylesheet\" type=\"text/css\" href=\"styles.css\"/> <title>Colleague</title></head><body>";
