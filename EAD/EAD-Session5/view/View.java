@@ -10,16 +10,37 @@ import java.util.List;
 
 import model.Cart;
 
+/**
+ * The Class View.
+ */
 public class View {
 
+    /** The br. */
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     
+    /**
+     * Menu.
+     *
+     * @return the int
+     * @throws NumberFormatException the number format exception
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     public int menu() throws NumberFormatException, IOException{
         System.out.print("Select Operation : \n 1) Add\n 2) Edit\n 3) Show \n 4) "
-                + "Genrate bill\n 5) Exit\n Enter you choicer : ");
+                + "Genrate bill\n 5) Exit\n Enter you choice : ");
         return Integer.parseInt(br.readLine());
     }
     
+    /**
+     * View item.
+     *
+     * @param itemList the item list
+     * @return the int
+     * @throws NumberFormatException the number format exception
+     * @throws IOException Signals that an I/O exception has occurred.
+     * @throws SQLException the SQL exception
+     */
+    //%5s and other  are for formating the output
     public int viewItem(ResultSet itemList) throws NumberFormatException, IOException, SQLException {
         int count = 0;
         System.out.println(String.format("%5s%20s%20s%20s%20s","SNo.","Code","Name","type","Price"));
@@ -32,6 +53,12 @@ public class View {
         return Integer.parseInt(br.readLine());
     }
 
+    /**
+     * Show cart.
+     *
+     * @param cart the cart
+     * @return the double
+     */
     public double showCart(Cart cart){
         int count = 0;
         List<Integer> code = cart.getProduct_code();
@@ -54,6 +81,14 @@ public class View {
         return total;
     }
     
+    /**
+     * Update cart.
+     *
+     * @param cart the cart
+     * @return the hash map
+     * @throws NumberFormatException the number format exception
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     public HashMap<Integer, Integer> updateCart(Cart cart) throws NumberFormatException, IOException {
         HashMap<Integer,Integer> serialNumberAndQuantity = new HashMap<Integer,Integer>(); 
         int serialNumber;
@@ -67,6 +102,11 @@ public class View {
         return serialNumberAndQuantity;
     }
     
+    /**
+     * Successful.
+     *
+     * @param number the number
+     */
     public void sccessful(int number) {
         if(number == 0){
             System.out.println("Successfully Add Item");
@@ -77,6 +117,11 @@ public class View {
         
     }
 
+    /**
+     * Bill.
+     *
+     * @param cart the cart
+     */
     public void bill(Cart cart) {
         double totalAmount;
         System.out.println();

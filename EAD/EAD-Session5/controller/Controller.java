@@ -5,8 +5,19 @@ import java.sql.SQLException;
 
 import facade.ShopingCardOperation;
 
+/**
+ * The Class Controller.
+ */
 public class Controller {
 
+    /**
+     * Select operation.
+     *
+     * @param parseInt the parse int
+     * @throws SQLException the SQL exception
+     * @throws NumberFormatException the number format exception
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     public void selectOperation(int parseInt) throws SQLException, NumberFormatException, IOException {
         ShopingCardOperation operation = new ShopingCardOperation();
         
