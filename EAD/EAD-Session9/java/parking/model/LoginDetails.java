@@ -12,7 +12,7 @@ public class LoginDetails {
 	@NotBlank(message = "{empty}")
 	@Email(message = "{badMail}")
 	String emailId;
-	
+
 	/** The password. */
 	@NotBlank(message = "{empty}")
 	String password;

@@ -13,12 +13,23 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.parking.model.Employee;
 import com.parking.service.EmployeeService;
+
+/**
+ * The Class EmployeeControler.
+ */
 @Controller
 public class EmployeeControler {
-	
+
+	/** The employee service. */
 	@Autowired
 	EmployeeService employeeService;
 
+	/**
+	 * Signup.
+	 *
+	 * @param model the model
+	 * @return the string
+	 */
 	@GetMapping("/signup")
 	public String signup(Model model) {
 		model.addAttribute("employee", new Employee());
@@ -26,7 +37,15 @@ public class EmployeeControler {
 
 	}
 
-
+	/**
+	 * Adds the employee.
+	 *
+	 * @param employee the employee
+	 * @param session the session
+	 * @param bindingResult the binding result
+	 * @param model the model
+	 * @return the string
+	 */
 	@PostMapping("/signup")
 
 	public String addEmployee(@Valid @ModelAttribute("employee") Employee employee, HttpSession session,
@@ -35,7 +54,7 @@ public class EmployeeControler {
 
 			return "redirect:/signup";
 		}
-		int userId =  employeeService.addEmployee(employee);
+		int userId = employeeService.addEmployee(employee);
 		session.setAttribute("userId", userId);
 		session.setAttribute("emailId", employee.getEmailId());
 		return "redirect:/vehicle";

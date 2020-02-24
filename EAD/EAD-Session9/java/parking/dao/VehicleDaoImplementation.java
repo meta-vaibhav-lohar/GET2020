@@ -9,11 +9,17 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 import com.parking.model.Vehicle;
 
+/**
+ * The Class VehicleDaoImplementation.
+ */
 @Repository
 public class VehicleDaoImplementation implements VehicleDao {
-	
-	
 
+	/**
+	 * Sets the value.
+	 *
+	 * @return the hash map
+	 */
 	private static HashMap<String, Double[]> setValue() {
 		HashMap<String, Double[]> priceCard = new HashMap<String, Double[]>();
 		Double[] cycle = { 5.0, 100.0, 500.0 };
@@ -26,19 +32,35 @@ public class VehicleDaoImplementation implements VehicleDao {
 		return priceCard;
 	}
 
+	/** The price card. */
 	private static HashMap<String, Double[]> priceCard = setValue();
-	
+
+	/**
+	 * Sets the price.
+	 *
+	 * @param passType the pass type
+	 * @param vehicleType the vehicle type
+	 * @return the double
+	 */
 	private Double setPrice(String passType, String vehicleType) {
 		Double dollarPerRuppee = 0.014;
 		if (passType.equals("Daily"))
 			return priceCard.get(vehicleType)[0] * dollarPerRuppee;
 		if (passType.equals("Monthly"))
-			return  priceCard.get(vehicleType)[1] * dollarPerRuppee;
+			return priceCard.get(vehicleType)[1] * dollarPerRuppee;
 		if (passType.equals("Yearly"))
-			return  priceCard.get(vehicleType)[2] * dollarPerRuppee;
+			return priceCard.get(vehicleType)[2] * dollarPerRuppee;
 		return null;
 	}
 
+	/**
+	 * Adds the vehicle.
+	 *
+	 * @param vehicle the vehicle
+	 * @param userId the user id
+	 * @param emailId the email id
+	 * @return the int
+	 */
 	@Override
 	public int addVehicle(Vehicle vehicle, Integer userId, String emailId) {
 
@@ -57,7 +79,6 @@ public class VehicleDaoImplementation implements VehicleDao {
 		Double price = setPrice(passType, vehicleType);
 
 		Integer vehicleId = null;
-
 
 		Connection connection = DatabaseConnect.connect();
 		String sql = "INSERT INTO vehicles(name, vehicle_type, vehicle_number, employee_id,"
@@ -90,16 +111,32 @@ public class VehicleDaoImplementation implements VehicleDao {
 
 	}
 
+	/**
+	 * Gets the all vehicles.
+	 *
+	 * @return the all vehicles
+	 */
 	@Override
 	public List<Vehicle> getAllVehicles() {
 		return null;
 	}
 
+	/**
+	 * Gets the price card.
+	 *
+	 * @return the price card
+	 */
 	@SuppressWarnings("unchecked")
 	public HashMap<String, Double[]> getPriceCard() {
 		return (HashMap<String, Double[]>) priceCard.clone();
 	}
 
+	/**
+	 * Gets the vehicle.
+	 *
+	 * @param id the id
+	 * @return the vehicle
+	 */
 	@Override
 	public Vehicle getVehicle(int id) {
 		Vehicle vehicle = new Vehicle();
@@ -115,11 +152,10 @@ public class VehicleDaoImplementation implements VehicleDao {
 		ResultSet rs = null;
 		String sql1 = "SELECT name, vehicle_type,vehicle_number, employee_id,identification,pass_type,price "
 				+ "FROM vehicles WHERE id=" + id;
-		
+
 		try {
 			rs = stmt.executeQuery(sql1);
-			
-			
+
 			while (rs.next()) {
 				vehicle.setName(rs.getString("name"));
 				vehicle.setVehicleType(rs.getString("vehicle_type"));
@@ -135,6 +171,12 @@ public class VehicleDaoImplementation implements VehicleDao {
 		return vehicle;
 	}
 
+	/**
+	 * Update vehicle.
+	 *
+	 * @param vehicle the vehicle
+	 * @param vehicleId the vehicle id
+	 */
 	@Override
 	public void updateVehicle(Vehicle vehicle, Integer vehicleId) {
 		String name = vehicle.getName();
@@ -149,17 +191,19 @@ public class VehicleDaoImplementation implements VehicleDao {
 
 		String passType = vehicle.getPassType();
 		Double price = setPrice(passType, vehicleType);
-		
-        String sql = "UPDATE VEHICLES SET name='"+name+"', vehicle_type='"+vehicleType+"', vehicle_number='"+vehicleNumber+"', employee_id='"+employeeId+"', identification='"+identification+"', pass_type='"+passType+"', price='"+price+"' WHERE id='"+vehicleId+"'";
-        
+
+		String sql = "UPDATE VEHICLES SET name='" + name + "', vehicle_type='" + vehicleType + "', vehicle_number='"
+				+ vehicleNumber + "', employee_id='" + employeeId + "', identification='" + identification
+				+ "', pass_type='" + passType + "', price='" + price + "' WHERE id='" + vehicleId + "'";
+
 		Connection connection = DatabaseConnect.connect();
 
 		Statement stmt = null;
 		try {
 			stmt = connection.createStatement();
-			
+
 			stmt.executeUpdate(sql);
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

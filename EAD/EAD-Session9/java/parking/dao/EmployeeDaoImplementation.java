@@ -12,9 +12,18 @@ import org.springframework.stereotype.Repository;
 
 import com.parking.model.Employee;
 
+/**
+ * The Class EmployeeDaoImplementation.
+ */
 @Repository
 public class EmployeeDaoImplementation implements EmployeeDao {
 
+	/**
+	 * Adds the employee.
+	 *
+	 * @param employee the employee
+	 * @return the int
+	 */
 	@Override
 	public int addEmployee(Employee employee) {
 
@@ -34,7 +43,7 @@ public class EmployeeDaoImplementation implements EmployeeDao {
 		try {
 			Statement stmt = connection.createStatement();
 
-			 stmt.executeUpdate(sql);
+			stmt.executeUpdate(sql);
 
 			String sql1 = "SELECT id FROM users WHERE email='" + emailId + "'";
 			ResultSet rs2 = stmt.executeQuery(sql1);
@@ -52,12 +61,23 @@ public class EmployeeDaoImplementation implements EmployeeDao {
 		return userId;
 	}
 
+	/**
+	 * Gets the all students.
+	 *
+	 * @return the all students
+	 */
 	@Override
 	public List<Employee> getAllStudents() {
 
 		return null;
 	}
 
+	/**
+	 * Gets the empolyee.
+	 *
+	 * @param mail the mail
+	 * @return the empolyee
+	 */
 	@Override
 	public Employee getEmpolyee(String mail) {
 		Employee employee = new Employee();
@@ -90,6 +110,13 @@ public class EmployeeDaoImplementation implements EmployeeDao {
 		return employee;
 	}
 
+	/**
+	 * Gets the friends list.
+	 *
+	 * @param organization the organization
+	 * @param email the email
+	 * @return the friends list
+	 */
 	public ArrayList<Employee> getFriendsList(String organization, String email) {
 
 		Connection connection = DatabaseConnect.connect();
@@ -123,6 +150,12 @@ public class EmployeeDaoImplementation implements EmployeeDao {
 
 	}
 
+	/**
+	 * Gets the vehicle id.
+	 *
+	 * @param mail the mail
+	 * @return the vehicle id
+	 */
 	public int getVehicleId(String mail) {
 
 		int vehicleId = 0;
@@ -144,6 +177,12 @@ public class EmployeeDaoImplementation implements EmployeeDao {
 
 	}
 
+	/**
+	 * Sets the employee image.
+	 *
+	 * @param emailId the email id
+	 * @param imageName the image name
+	 */
 	public void setEmployeeImage(String emailId, String imageName) {
 		Connection connection = DatabaseConnect.connect();
 
@@ -166,7 +205,7 @@ public class EmployeeDaoImplementation implements EmployeeDao {
 				insert.executeUpdate();
 			} else {
 				PreparedStatement insert = connection
-						.prepareStatement("update image set imagename = ? where emailId = '" + emailId + "'" );
+						.prepareStatement("update image set imagename = ? where emailId = '" + emailId + "'");
 				insert.setString(1, imageName);
 				insert.executeUpdate();
 			}
@@ -176,6 +215,12 @@ public class EmployeeDaoImplementation implements EmployeeDao {
 
 	}
 
+	/**
+	 * Gets the employee image.
+	 *
+	 * @param emailId the email id
+	 * @return the employee image
+	 */
 	public String getEmployeeImage(String emailId) {
 
 		Connection connection = DatabaseConnect.connect();
@@ -185,7 +230,7 @@ public class EmployeeDaoImplementation implements EmployeeDao {
 		try {
 			stmt = connection.createStatement();
 
-			String strQuery = "SELECT imagename FROM image where emailId='" + emailId+ "'";
+			String strQuery = "SELECT imagename FROM image where emailId='" + emailId + "'";
 			ResultSet rs = stmt.executeQuery(strQuery);
 			while (rs.next()) {
 				imageName = rs.getString("imagename");
@@ -193,41 +238,47 @@ public class EmployeeDaoImplementation implements EmployeeDao {
 			return imageName;
 
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
 
 	}
 
+	/**
+	 * Update employee.
+	 *
+	 * @param employee the employee
+	 * @param mail the mail
+	 * @return the integer
+	 */
 	@Override
-	public Integer updateEmployee(Employee employee,String mail) {
+	public Integer updateEmployee(Employee employee, String mail) {
 		System.out.println("Update Employee");
 		String fullName = employee.getFullName();
 		String gender = employee.getGender();
 		String emailId = employee.getEmailId().toLowerCase();
 		String contactNum = employee.getContactNum();
 		String organization = employee.getOrganization();
-		
-        String sql = "UPDATE USERS SET full_name='"+fullName+"', gender='"+gender+"', email='"+emailId+"', contact='"+contactNum+"', organisation='"+organization+"' WHERE email='"+mail+"'";
-        String sql2 = "UPDATE image SET emailId='"+emailId+"' WHERE emailId = '"+mail+"'";
-        String sql1 = "SELECT vehicleId FROM users WHERE email='"+mail+"'";
-        Integer vehicleId=null;
-        Connection connection = DatabaseConnect.connect();
-        try {
+
+		String sql = "UPDATE USERS SET full_name='" + fullName + "', gender='" + gender + "', email='" + emailId
+				+ "', contact='" + contactNum + "', organisation='" + organization + "' WHERE email='" + mail + "'";
+		String sql2 = "UPDATE image SET emailId='" + emailId + "' WHERE emailId = '" + mail + "'";
+		String sql1 = "SELECT vehicleId FROM users WHERE email='" + mail + "'";
+		Integer vehicleId = null;
+		Connection connection = DatabaseConnect.connect();
+		try {
 			Statement stmt = connection.createStatement();
-			
+
 			stmt.executeUpdate(sql);
 			stmt.executeUpdate(sql2);
 			ResultSet rs = stmt.executeQuery(sql1);
 			rs.next();
-			vehicleId = rs.getInt("vehicleId");			
-			
-			
+			vehicleId = rs.getInt("vehicleId");
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-        return vehicleId;
+		return vehicleId;
 	}
 
 }
