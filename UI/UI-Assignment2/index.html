@@ -49,7 +49,7 @@
 
                 <div class="form-items">
                     <label class="label">
-                        <input id="empGen" type="radio" name="Gender" />
+                        <input id="empGen" type="radio" name="Gender" checked />
                         Male
                         <span class="checkmark"></span>
                     </label>
@@ -58,6 +58,7 @@
                         Female
                         <span class="checkmark"></span>
                     </label>
+
                 </div>
 
 
@@ -112,7 +113,7 @@
                 <div class="form-items">
                     <select class="input" id="vehType" title="Chose Vehicle Type">
                         <option selected hidden>-- Choose Vehicle Type --</option>
-                        <option value="cycle">Cycle</option>
+                        <option value="cycle" selected >Cycle</option>
                         <option value="bike">Bike</option>
                         <option value="car">Four Wheeler</option>
                     </select>
@@ -146,10 +147,10 @@
                         <input class="input" type="text" name="name" id="name" placeholder="Name">
                     </div>
                     <div class="form-items">
-                        <input class="input" type="email" name="emailId" id="emailId" placeholder="Email">
+                        <input required type="email" name="email" class="input" placeholder="Email Address" ] />
                     </div>
                     <div class="form-items">
-                        <input class="input" type="text" name="subject" id="subject" placeholder="Subject">
+                        <input required class="input" type="text" name="subject" id="subject" placeholder="Subject">
                     </div>
                     <div class="form-items">
                         <textarea class="input" name="vehicleIdentification" placeholder="Message " cols="30" required></textarea>
