@@ -1,176 +1,223 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Metacube Parking System</title>
+    <link rel="stylesheet" href="index.css">
+
 </head>
 
-<body align="center">
-    <!-- Nav Bar Div -->
-    <div id="navBar">
-        <span><a href="#addEmployee">Add Employee</a></span>
-        <span><a href="#addVehicle">Add Vehicle</a></span>
-        <span><a href="#feedback">Give feedback</a></span>
-        <span><a href="#pricing">Pricing</a></span>
+<body>
+    <div class="header">
+        <div class="heading">
+            <nav class="navbar">
+                <img class="logo" src="parking.png" />
+                <ul class="main-nav" id="js-menu">
+                    <li>
+                        <a href="#employeeForm" class="nav-links">Add Employee</a>
+                    </li>
+                    <li>
+                        <a href="#vehicleForm" class="nav-links">Add Vehicle</a>
+                    </li>
+                    <li>
+                        <a href="#feedbackForm" class="nav-links">Feedback</a>
+                    </li>
+                    <li>
+                        <a href="#pricing" class="nav-links">Price Card</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="imgDiv">
+            <img id="imgTag" src="asphalt-autumn-colours-autumn-leaves-bright-colours-279734.jpg">
+        </div>
     </div>
-    <br/>
-    <!-- Image Div -->
-    <div id="imgDiv">
-        <img src="image/parking.png" alt="Parking Logo" width="100px">
-    </div>
+    <div>
+        <div class="register">
+            <div class="formName">
+                <h3>Employee Form</h3>
+            </div>
+            <form id="employeeForm">
+                <div class="form-items">
+                    <label for="empName">
+                        <input id="empName" required class="input" type="text" name="empName"
+                            placeholder="Name (Only Alphabets)" minlength="2" />
 
-    <br><br>
-    <!-- Employee Detail Region -->
-    <div id="addEmployee">
-        <h2>Employee Form</h2>
-        <form>
-            <div>
-                Full Name: <input type="text" name="fullName" id="fullName" placeholder="Full Name">
-
-            </div>
-            <div>
-                Gender:
-                <label for="maleButton">
-                    <input type="radio" name="gender" id="maleButton" >Male
-                </label>
-                <label for="femaleButton">
-                    <input type="radio" name="gender" id="femaleButton">Female
-                </label>
-            </div>
-            <div>
-                Email: <input type="email" name="emailId" id="emailId" placeholder="Email Address" pattern="^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$" required>
-
-            </div>
-            <div>
-                Password: <input type="password" name="password" id="password" placeholder="Password" pattern="(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}" required>
-
-            </div>
-            <div>
-                Confirm Password: <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm Password" pattern="(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}" required>
-
-            </div>
-            <div>
-                Contact Number <input type="tel" name="contactNumber" id="contactNumber" placeholder="Contact Number" pattern="([0-9]){10}" required>
-
-            </div>
-            <div>
-                <input type="submit" value="Add Employee">
-            </div>
-        </form>
-    </div>
-
-    <br/><br/>
-    <!-- Vehicle Detail Region  -->
-    <div id="addVehicle">
-        <h2>Vehicle Form</h2>
-        <form>
-            <div>
-                Company :
-                <input type="text" name="company" placeholder="Vehicle Company" id="vehicleCompany" id="company" pattern="[A-Z a-z]*" required>
-            </div>
-            <div>
-                Vehicle Model :
-                <input type="text" name="model" placeholder="Vehicle Model" id="model" required>
-            </div>
-            <div>
-                Type:
-                <select name="typeOfVehicle">
-                    <option disabled selected>--Select-Type--</option>
-                    <option value="Cycle">Cycle</option>
-                    <option value="MotorCycle">MotorCycle</option>
-                    <option value="Four Wheelers">Four Wheelers</option>
-                </select>
-            </div>
-            <div>
-                Vehicle Number :
-                <input type="text" name="vehicleNumber" placeholder="Vehicle Number" pattern="^[A-Z]{2}[ -][0-9]{1,2}(?: [A-Z])?(?: [A-Z]*)? [0-9]{4}$" id="vehicleNumber" required>
-            </div>
-            <div>
-                Employee Id:
-                <input type="text" name="employeeId" placeholder="Employee Id" id="employeeId" required>
-            </div>
-            <div>
-                Identification: <textarea name="vehicleIdentification" placeholder="Identification" placeholder="Color, Mark, Visible Accessory" cols="60" required></textarea>
-            </div>
-            <div>
-                <input type="submit" value="Add Vehicle">
-            </div>
-        </form>
-    </div>
-    <br/><br/>
-
-    <!-- Feedback region -->
-    <div id="feedback">
-        <h2>
-            Get In Touch
-        </h2>
-        <div>
-            <form>
-                <div>
-                    <input type="text" name="name" id="name" placeholder="Name">
+                    </label>
                 </div>
-                <div>
-                    <input type="email" name="emailId" id="emailId" placeholder="Email">
+
+
+                <div class="form-items">
+                    <label class="label">
+                        <input id="empGen" type="radio" name="Gender" checked />
+                        Male
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="label">
+                        <input id="empGen" type="radio" name="Gender" />
+                        Female
+                        <span class="checkmark"></span>
+                    </label>
+
                 </div>
-                <div>
-                    <input type="text" name="subject" id="subject" placeholder="Subject">
+
+
+                <div class="form-items">
+                    <label for="email">
+                        <input required type="email" name="email" class="input" placeholder="Email Address" ] />
+                    </label>
                 </div>
-                <div>
-                    <textarea name="vehicleIdentification" placeholder="Message " cols="60" required></textarea>
+
+
+                <div class="form-items">
+                    <label for="password">
+                        <input required id="empPass" type="password" name="password" class="input"
+                            placeholder="Password" />
+                    </label>
                 </div>
-                <div>
-                    <input type="submit" value="Send Email">
+
+
+                <div class="form-items">
+                    <label for="cpassword">
+                        <input required type="password" id="confirmPass" class="input" name="cpassword"
+                            placeholder="Confirm Password" required />
+                    </label>
+                </div>
+
+
+                <div class="form-items">
+                    <label for="tel">
+                        <input required type="tel" class="input" name="tel" minlength="8" pattern="/\d/g"
+                            placeholder="Phone number" />
+                    </label>
+                </div>
+
+
+                <input required type="submit" value="Submit" class="btn" />
+
+
+            </form>
+        </div>
+
+
+        <div class="register">
+            <div class="formName">
+                <h3>Vehicle Form</h3>
+            </div>
+            <form id="vehicleForm">
+                <div class="form-items">
+                    <input class="input" id="vehName" type="text" placeholder="Vehicle Name" required />
+                </div>
+
+
+                <div class="form-items">
+                    <select class="input" id="vehType" title="Chose Vehicle Type">
+                        <option selected hidden>-- Choose Vehicle Type --</option>
+                        <option value="cycle" selected >Cycle</option>
+                        <option value="bike">Bike</option>
+                        <option value="car">Four Wheeler</option>
+                    </select>
+                </div>
+
+
+                <div class="form-items">
+                    <input class="input" type="text" placeholder="Employee Id" required />
+                </div>
+
+
+                <div class="form-items">
+                    <textarea class="input" placeholder=" Color, mark,visible accessory etc." rows="5"></textarea>
+                </div>
+
+
+                <div class="form-items">
+                    <input class="btn" type="submit" value="Submit" onclick="price()" />
                 </div>
             </form>
         </div>
 
+
+        <div class="register" id="feedback">
+            <div>
+                <div class="formName">
+                    <h3>Feedback Form</h3>
+                </div>
+                <form id="feedbackForm">
+                    <div class="form-items">
+                        <input class="input" type="text" name="name" id="name" placeholder="Name">
+                    </div>
+                    <div class="form-items">
+                        <input required type="email" name="email" class="input" placeholder="Email Address" ] />
+                    </div>
+                    <div class="form-items">
+                        <input required class="input" type="text" name="subject" id="subject" placeholder="Subject">
+                    </div>
+                    <div class="form-items">
+                        <textarea class="input" name="vehicleIdentification" placeholder="Message " cols="30" required></textarea>
+                    </div>
+                    <div class="form-items">
+                        <input class="btn" type="submit" value="Send Email">
+                    </div>
+                </form>
+            </div>
+
+        </div>
+
+
+        <div class="register" id="pricing">
+            <div class="formName">
+                <h3>Price</h3>
+            </div>
+            <div class="rateCards">
+                <div class="card">
+                    <h3>Cycle</h3>
+                    <!-- Div for display highlighted price -->
+                    <div class="display_price">
+                        <strong>$100</strong>
+                        <span>/Month</span>
+                    </div>
+
+                    <div class="plans">
+                        <span>$5 Daily</span>
+                        <span>$100 Monthly</span>
+                        <span>$500 Yearly</span>
+                    </div>
+                    <input type="button" class="btn" value="PURCHASE NOW" id="plan_purchase">
+                </div>
+                <div class="card">
+                    <h3>Motor Cycle</h3>
+                    <!-- Div for display highlighted price -->
+                    <div class="display_price">
+                        <strong>$200</strong>
+                        <span>/Month</span>
+                    </div>
+
+                    <div class="plans">
+                        <span>$10 Daily</span>
+                        <span>$200 Monthly</span>
+                        <span>$1000 Yearly</span>
+                    </div>
+                    <input type="button" class="btn" value="PURCHASE NOW" id="plan_purchase">
+                </div>
+                <div class="card">
+                    <h3>Four Wheelers</h3>
+                    <!-- Div for display highlighted price -->
+                    <div class="display_price">
+                        <strong>$500</strong>
+                        <span>/Month</span>
+                    </div>
+
+                    <div class="plans">
+                        <span>$20 Daily</span>
+                        <span>$500 Monthly</span>
+                        <span>$3500 Yearly</span>
+                    </div>
+                    <input type="button" class="btn" value="PURCHASE NOW" id="plan_purchase">
+                </div>
+            </div>
+        </div>
     </div>
 
-    <!-- Price Region -->
-    <div id="pricing">
-        <h2>Pricing Details</h2>
-        <div id="price_cycle">
-            <h2>Cycle</h2>
-            <!-- Div for display highlighted price -->
-            <div id="display_price">
-                <strong>$100</strong>
-                <span>/Month</span>
-            </div>
-            <br />
-            <span>$5 Daily</span><br />
-            <span>$100 Monthly</span><br />
-            <span>$500 Yearly</span><br /><br />
-            <input type="button" value="PURCHASE NOW" id="plan_purchase"><br />
-        </div>
-        <div id="price_cycle">
-            <h2>Motor Cycle</h2>
-            <!-- Div for display highlighted price -->
-            <div id="display_price">
-                <strong>$200</strong>
-                <span>/Month</span>
-            </div>
-            <br />
-            <span>$10 Daily</span><br />
-            <span>$200 Monthly</span><br />
-            <span>$1000 Yearly</span><br /><br />
-            <input type="button" value="PURCHASE NOW" id="plan_purchase"><br />
-        </div>
-        <div id="price_cycle">
-            <h2>Four Wheelers</h2>
-            <!-- Div for display highlighted price -->
-            <div id="display_price">
-                <strong>$500</strong>
-                <span>/Month</span>
-            </div>
-            <br />
-            <span>$20 Daily</span><br />
-            <span>$500 Monthly</span><br />
-            <span>$3500 Yearly</span><br /><br />
-            <input type="button" value="PURCHASE NOW" id="plan_purchase"><br />
-        </div>
-    </div>
 </body>
 
 </html>
