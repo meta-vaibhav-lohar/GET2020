@@ -1,0 +1,252 @@
+* {
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+}
+
+body {
+    background: linear-gradient(45deg, #c850c0, #4158d0);
+    width: 100%;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.formName {
+    padding: 5px;
+    margin: 10px;
+    text-align: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.header {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.heading {
+    background-color: black;
+    color: honeydew;
+    clear: #535274;
+    letter-spacing: 2px;
+    text-align: center;
+    height: 15%;
+    padding: 5px;
+}
+
+.register {
+    background-color: #fff;
+    width: fit-content;
+    height: 100%;
+    padding: 50px;
+    margin: 150px auto;
+    border-radius: 25px;
+    position: relative;
+}
+
+.form-items .input {
+    width: inherit;
+    margin-bottom: 12px;
+    padding: 15px 40px;
+    box-sizing: border-box;
+    background: #ebeef1;
+    border: 0;
+    outline: none;
+    border-radius: 25px;
+}
+
+.btn {
+    border: none;
+    background: none;
+    color: #fff;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.btn :focus {
+    cursor: pointer;
+}
+
+.btn {
+    width: 100%;
+    background: seagreen;
+    text-align: center;
+    color: #fff;
+    padding: 12px;
+    border-radius: 25px;
+}
+
+.label {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+
+/* Hide the browser's default radio button */
+
+.label input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+
+/* Create a custom radio button */
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 50%;
+}
+
+
+/* On mouse-over, add a grey background color */
+
+.label:hover input~.checkmark {
+    background-color: #ccc;
+}
+
+
+/* When the radio button is checked, add a blue background */
+
+.label input:checked~.checkmark {
+    background-color: #2196F3;
+}
+
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+
+/* Show the indicator (dot/circle) when checked */
+
+.label input:checked~.checkmark:after {
+    display: block;
+}
+
+
+/* Style the indicator (dot/circle) */
+
+.label .checkmark:after {
+    top: 9px;
+    left: 9px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+}
+
+.imgDiv {
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}
+
+#imgTag {
+    width: 100%;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: -1;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+    height: 40px;
+    align-items: center;
+    z-index: 2;
+}
+
+.main-nav {
+    list-style-type: none;
+    display: none;
+}
+
+.main-nav {
+    display: flex;
+    margin-right: 30px;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.main-nav li {
+    margin: 0;
+}
+
+.nav-links {
+    margin-left: 40px;
+    text-decoration: none;
+    color: #eee;
+}
+
+.logo {
+    margin-top: 0;
+    width: 35px;
+}
+
+.navbar-toggle {
+    display: none;
+}
+
+.logo:hover,
+.nav-links:hover {
+    color: rgba(255, 255, 255, 1);
+}
+
+.rateCards {
+    display: flex;
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    padding: 15px;
+    text-align: center;
+    margin: 15px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.cardContainer {
+    padding: 2px 16px;
+    text-align: center;
+}
+
+.display_price {
+    width: 80px;
+    height: 80px;
+    display: inline;
+    text-align: center;
+    border-radius: 50%;
+    border: 2px solid #4158d0;
+    display: inline-block;
+}
+
+.plans>span {
+    display: block;
+    margin: 5px;
+    padding: 5px;
+}
