@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metacube Parking System</title>
+    <script src="index.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <!-- navigation bar -->
+    <div id="navigation">
+        <nav>
+            <ul>
+                <li><a href="#" id="addEmp" style="display: block" onclick="registerationForm();return false;">Add
+                        Employee</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- main heading -->
+    <div id="main-head">
+        <h1>Metacube Parking System</h1><br />
+        <h3 id="u_Registration" style="display: none">User Registration in Progress</h3>
+        <h3 id="v_Registration" style="display: none">Vehicle Registration in Progress</h3>
+        <h3 id="p_Registration" style="display: none">Plan Registration in Progress</h3>
+    </div>
+
+    <!-- image section -->
+    <div id="image-div">
+        <img src="asphalt-autumn-colours-autumn-leaves-bright-colours-279734.jpg" height="500px" id="coverImg" />
+    </div>
+
+    <div class="container mt-5 " id="contain">
+
+        <div class="form-group display-4" style="display:none" id="label">
+            <label id="labelText">Hey , Happy to register you . Can I know your name ?</label>
+        </div>
+
+        <div>
+            <label id="error" class="text-danger"></label>
+        </div>
+        <!--employee form -->
+        <form>
+            <div class="form-group" id="empName" style="display: none">
+                <input type="text" class="form-control w-50" placeholder="Your name" name="ename" id="ename" required>
+            </div>
+            <div class="form-group" id="empGender" style="display: none">
+                <div>
+                    <label>
+                        <input type="radio" name="egender" value="Male" id="male-radio">
+                        <span>
+                            Male
+                        </span>
+                    </label>
+                    <label>
+                        <input type="radio" name="egender" value="Female" id="female-radio">
+                        <span>
+                            Female
+                        </span>
+                    </label>
+                </div>
+            </div>
+            <div class="form-group" id="empEmail" style="display: none">
+                <input type="email" class="form-control w-50" placeholder="Enter Your Email" name="eemail" id="eemail" type="email" required>
+            </div>
+            <div class="form-group" id="empPass" style="display: none">
+                <input type="Password" onkeypress="validatePassword()" class="form-control w-50" placeholder="Enter Password" name="epass" id="epass" required>
+            </div>
+            <div class="form-group" id="empCnfrmPass" style="display: none">
+                <input type="Password" class="form-control w-50" placeholder="Re-Enter password" name="ecnfrmpass" id="ecnfrmpass" required>
+            </div>
+            <div class="form-group" id="empContact" style="display: none">
+                <input type="text" class="form-control w-50" placeholder="Enter Your Number" name="ecnumber" id="ecnumber" maxlength="10" required>
+            </div>
+            <div class="form-group next" style="display: none" id="next1">
+                <button type="button" class="btn btn-primary mt-2" onclick="vehicleForm()">Next</button>
+            </div>
+
+        </form>
+
+
+
+        <!-- Vehice registration form -->
+        <div id="vehicle_form_head" style="display:none">
+            <h2>Register Vehicle</h2>
+        </div>
+        <form>
+            <div class="form-group" id="vehName" style="display: none">
+                <input type="text" class="form-control w-50" placeholder="Vehicle name" name="vname" id="vname" required>
+            </div>
+            <div class="form-group" id="vehType" name="vehicleType" style="display: none">
+                <select class="form-control w-50" id="vtype" name="vtype">
+                    <option value="" selected disabled>Choose here</option>
+                    <option value="Cycle">Cycle</option>
+                    <option value="Motorcycle">Motorcycle</option>
+                    <option value="FourWheeler">FourWheeler</option>
+                </select>
+            </div>
+            <div class="form-group" id="vehNumber" style="display: none">
+                <input type="text" class="form-control w-50" placeholder="Enter Vehicle number" name="vnumber" id="vnumber" required>
+            </div>
+            <div class="form-group" id="vehDescription" style="display: none">
+                <textarea class="form-control w-50" placeholder="Enter Vehicle Identification" rows="3" name="videntity" id="videntity" required></textarea>
+            </div><br>
+            <div class="form-group next" style="display: none" id="next2">
+                <button type="button" onclick="planForm()" class="btn btn-primary mt-2">Next</button>
+            </div>
+        </form>
+
+        <form>
+            <div style="display:none">
+                <h2>Choose your plan</h2>
+            </div>
+            <div class="form-group" id="currType" style="display: none">
+                <select id="currency" class="form-control w-50" onchange="showPrice()">
+                    <option value="" selected disabled>Choose here</option>
+                    <option value="INR">INR</option>
+                    <option value="USD">USD</option>
+                    <option value="YEN">YEN</option>
+                </select>
+            </div>
+            <div class="form-group" id="plans" style="display: none">
+                <label class="label-display">
+                    <input type="radio" id="daily1" name="passtype" value="Daily" checked><span>Daily - </span><label id="daily"></label>
+                </label>
+                <label class="label-display">
+                    <input type="radio" id="Monthly2" name="passtype" value="Monthly"><span>Monthly - </span><label
+                        id="monthly"></label><br />
+                </label>
+                <label class="label-display">
+                    <input type="radio" id="Yearly3" name="passtype" value="Yearly"><span>Yearly - </span><label
+                        id="yearly"></label>
+                </label>
+            </div>
+            <div class="form-group next" style="display: none" id="submit">
+                <button type="button" onclick="submitForm()" class="btn btn-primary mt-2">Submit</button>
+            </div>
+        </form>
+
+
+    </div>
+</body>
+
+</html>
