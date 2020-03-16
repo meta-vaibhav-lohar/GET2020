@@ -1,0 +1,86 @@
+<html>
+
+<head>
+    <title>Remove Repeated String</title>
+    <script>
+        function Node(data) {
+            this.data = data;
+            this.next = null;
+        }
+
+        function Stack() {
+            this.top = null;
+        }
+        Stack.prototype.push = function(data) {
+            var newNode = new Node(data);
+            newNode.next = this.top;
+            this.top = newNode;
+        }
+        Stack.prototype.pop = function() {
+            if (this.top == null) {
+                console.log("Stack is empty");
+            } else {
+                var removeNode = this.top;
+                this.top = this.top.next;
+                return removeNode.data;
+            }
+        }
+        Stack.prototype.printStack = function() {
+            var current = this.top;
+            var string = "";
+            while (current != null) {
+                string += current.data + " ";
+                current = current.next;
+            }
+            console.log(string);
+        }
+        Stack.prototype.empty = function() {
+            if (this.top == null)
+                return true;
+            else
+                return false;
+        }
+
+        function RemoveConsecutive() {
+            var inputString = document.getElementById("inputText").value;
+            stack1 = new Stack();
+            stack2 = new Stack();
+            for (var index = 0; index < inputString.length; index++) {
+                stack1.push(inputString[index]);
+            }
+            var previousValue = "";
+            while (!stack1.empty()) {
+                if (!stack2.empty() && stack1.top.data == stack2.top.data) {
+                    previousValue = stack1.pop();
+                    stack2.pop();
+                } else {
+                    var currentValue = stack1.pop();
+                    if (previousValue != currentValue) {
+                        previousValue = currentValue;
+                        stack2.push(currentValue);
+                    }
+                }
+            }
+            var outputString = "";
+            while (!stack2.empty()) {
+                outputString += stack2.pop();
+            }
+            if (outputString.length == 0) {
+                document.getElementById("inputText").value = "Empty String";
+            } else {
+                document.getElementById("inputText").value = outputString;
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <form style="display:block;text-align:center;margin-top:100px;">
+        <h3>Remove Repeated String</h3>
+        <input type="text" id="inputText" placeholder="Enter String to reduce" />
+        <input type="button" value="Remove" onclick="RemoveConsecutive()" style="margin-left:10px;">
+    </form>
+
+</body>
+
+</html>
