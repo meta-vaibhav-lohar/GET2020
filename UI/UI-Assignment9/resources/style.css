@@ -1,0 +1,44 @@
+#main-head {
+    text-align: center;
+}
+
+span {
+    margin: 5px;
+}
+
+.label-display {
+    display: block;
+}
+
+#image-div {
+    text-align: center;
+}
+
+
+/*Navigation bar style*/
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: linear-gradient(-135deg, rgb(69, 1, 179), rgb(138, 10, 243));
+}
+
+li {
+    float: 1;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+}
+
+li a:hover {
+    text-decoration: none;
+    background-color: #111;
+    color: aquamarine;
+}
