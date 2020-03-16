@@ -1,0 +1,46 @@
+<html>
+
+<head>
+    <title>Repeate String</title>
+    <script>
+        String.prototype.repeatify = function(counter) {
+            
+            newString = ""
+            for (var i = 0; i < counter; i++) {
+                newString += this;
+               
+            }
+            return newString;
+        };
+
+        function stringFunction() {
+            var count = document.getElementById("inputValue").value;
+            var str = document.getElementById("inputText").value;
+            
+            var repetedString = str.repeatify(count)
+            
+            document.getElementById("showResult").innerHTML = repetedString;
+        }
+
+        // function reptify(string, counter) {
+        //     var newString = "";
+        //     for (var i = 0; i < counter; i++) {
+        //         newString += string;
+        //     }
+        //     return newString;
+        // }
+    </script>
+</head>
+
+<body>
+    <form style="display:block;text-align:center;margin-top:100px;">
+        <h3>Repeatify String</h3>
+        <input type="text" id="inputText" placeholder="Enter String to be Repeated" />
+        <input type="number" id="inputValue" placeholder="Enter How many times it should be repeated" />
+        <input type="button" value="Repeat" onclick="stringFunction()" style="margin-left:10px;">
+        <h3 id="showResult"> </h3>
+    </form>
+
+</body>
+
+</html>
