@@ -1,0 +1,47 @@
+<div *ngFor="let task of tasks">
+  <div class="card mw-100 m-2" *ngIf="task.status==status">
+    <div class="card-body">
+      <h5 class="card-title"> {{ task.title}} </h5> 
+      <p class="card-text"> {{ task.status}} </p>
+    </div>
+    <div>
+      <button class="btn btn-info btn-info" data-toggle="modal" data-target="#Modal2" >Edit</button>
+      <!-- Modal -->
+      <div class="modal fade" id="Modal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Edit Task Details</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group m-3">
+                  <input class="form-control" name="title" id="editTitle" type="text" placeholder="Task Title">
+                </div>
+                <div class="form-group m-3"> 
+                  <textarea class="form-control" name="description" id="editDescription" rows="3" placeholder="Description"></textarea>
+                </div>
+                <div class="form-group m-3">
+                  <select class="form-control form-control-sm" name="status" id="editStatus">
+                    <option selected disabled>--Status--</option>
+                    <option>New</option>
+                    <option>In Progress</option>
+                    <option>Completed</option>
+                  </select> 
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" value='{{ task.id }}' (click)="edit(task)">Edit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+</div>

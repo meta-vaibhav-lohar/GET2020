@@ -1,0 +1,40 @@
+<nav class="navbar navbar-light bg-light justify-content-between pt-5 px-5">
+    <a class="navbar-brand">My Task Tracker</a>
+      <!-- Button trigger modal -->
+    <button type="button" class="btn btn-outline-secondary my-2 my-sm-0 task" data-toggle="modal" data-target="#Modal1">
+  Add Task</button>
+  <div class="modal fade" id="Modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Task Details</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group m-3">
+              <input class="form-control" name="title" id="title" type="text" placeholder="Task Title">
+            </div>
+            <div class="form-group m-3"> 
+              <textarea class="form-control" name="description" id="description" rows="3" placeholder="Description"></textarea>
+            </div>
+            <div class="form-group m-3">
+              <select class="form-control form-control-sm" name="status" id="status">
+                <option selected disabled>--Status--</option>
+                <option>New</option>
+                <option>In Progress</option>
+                <option>Completed</option>
+              </select> 
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" (click)="add()">Add</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  </nav>

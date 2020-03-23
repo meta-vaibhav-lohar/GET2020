@@ -1,0 +1,10 @@
+.navbar{
+    border-bottom: 0.001rem solid black;
+}
+.navbar-brand{
+    color:aqua;
+}
+.task{
+    border-color: aquamarine;
+  
+}
